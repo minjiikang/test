@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>상품명 변환 도구</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; }
+    label { display: block; margin: 0.5em 0 0.2em; }
+    input, select { width: 200px; padding: 0.3em; }
+    button { margin-top: 1em; padding: 0.5em 1em; }
+    #result { margin-top: 1.5em; font-weight: bold; color: #2c3e50; }
+  </style>
+</head>
+<body>
+  <h2>📦 상품명 자동 변환기</h2>
+
+  <label>온도속성</label>
+  <select id="temp">
+    <option value="저온">저온</option>
+    <option value="상온">상온</option>
+    <option value="냉동">냉동</option>
+  </select>
+
+  <label>브랜드</label>
+  <select id="brand">
+    <option value="없음">없음</option>
+    <option value="떠리몰">떠리몰</option>
+    <option value="프레시코">프레시코</option>
+  </select>
+
+  <label>상품명</label>
+  <input type="text" id="name" placeholder="예: 사과">
+
+  <label>중량</label>
+  <input type="text" id="weight" placeholder="예: 500">
+
+  <label>단위</label>
+  <select id="unit">
+    <option value="g">g</option>
+    <option value="ml">ml</option>
+    <option value="개">개</option>
+  </select>
+
+  <label>입수량</label>
+  <input type="number" id="count" value="1">
+
+  <button onclick="generate()">변환</button>
+
+  <div id="result"></div>
+
+  <script>
+    function generate() {
+      const temp = document.getElementById("temp").value;
+      const brand = document.getElementById("brand").value;
+      const name = document.getElementById("name").value;
+      const weight = document.getElementById("weight").value;
+      const unit = document.getElementById("unit").value;
+      const count = document.getElementById("count").value;
+
+      const label = `[${temp}]${brand !== "없음" ? `[${brand}]` : ""} ${name} ${weight}${unit} • ${count}개 (떠리몰무료배송)`;
+      document.getElementById("result").innerText = label;
+    }
+  </script>
+</body>
+</html>
